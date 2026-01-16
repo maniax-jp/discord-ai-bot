@@ -71,6 +71,70 @@ npm run build
 npm start
 ```
 
+## OS起動時の自動起動設定
+
+### systemdサービスとして登録（Linux）
+
+1. サービスファイルを作成:
+
+```bash
+sudo nano /etc/systemd/system/discord-ai-bot.service
+```
+
+2. 以下の内容を記述（パスは環境に合わせて変更）:
+
+```ini
+[Unit]
+Description=Discord AI ChatBot
+After=network.target
+
+[Service]
+Type=simple
+User=maniax
+WorkingDirectory=/home/maniax/dev/discord-ai-bot
+ExecStart=/home/maniax/.nvm/versions/node/v24.13.0/bin/node /home/maniax/dev/discord-ai-bot/dist/index.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+3. サービスを有効化して起動:
+
+```bash
+# サービスを有効化（OS起動時に自動起動）
+sudo systemctl enable discord-ai-bot
+
+# サービスを開始
+sudo systemctl start discord-ai-bot
+
+# ステータス確認
+sudo systemctl status discord-ai-bot
+
+# ログ確認
+sudo journalctl -u discord-ai-bot -f
+```
+
+4. サービスの管理コマンド:
+
+```bash
+# サービスを停止
+sudo systemctl stop discord-ai-bot
+
+# サービスを再起動
+sudo systemctl restart discord-ai-bot
+
+# 自動起動を無効化
+sudo systemctl disable discord-ai-bot
+```
+
+**注意事項:**
+- `User`、`WorkingDirectory`、`ExecStart`のパスは環境に合わせて変更してください
+- nvmを使用している場合、Node.jsの正確なパスを指定する必要があります（`which node`で確認）
+- `.env`ファイルがプロジェクトディレクトリに存在することを確認してください
+
 ## 使い方
 
 Discordで `@BOT名 質問内容` と送信すると、AIが140文字以内で回答します。
