@@ -1,0 +1,15 @@
+[Unit]
+Description=Discord AI ChatBot
+After=network.target
+
+[Service]
+Type=simple
+User=maniax
+WorkingDirectory=/home/maniax/dev/discord-ai-bot
+ExecStart=/home/maniax/.nvm/versions/node/v24.13.0/bin/node /home/maniax/dev/discord-ai-bot/dist/index.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
