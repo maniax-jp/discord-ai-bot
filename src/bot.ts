@@ -60,7 +60,7 @@ export class DiscordBot {
 
     // メッセージが空の場合
     if (!content) {
-      await message.reply("何かメッセージを入力してください！");
+      await message.reply("ウホ？仲間よ、何か話しかけてくれウホ！🦍🍌");
       return;
     }
 
@@ -80,7 +80,7 @@ export class DiscordBot {
       await message.reply(response);
     } catch (error) {
       console.error("メッセージ処理エラー:", error);
-      await message.reply("エラーが発生しました。もう一度お試しください。");
+      await message.reply("ウホホ…ゴリ太郎、つまずいたウホ。もう一回試してウホ！🍌");
     }
   }
 
