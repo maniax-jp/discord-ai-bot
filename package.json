@@ -1,0 +1,30 @@
+{
+  "name": "discord-ai-bot",
+  "version": "1.0.0",
+  "description": "Discord AIチャットボット - 140文字以内で応答",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ai",
+    "gemini"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.37.0",
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
